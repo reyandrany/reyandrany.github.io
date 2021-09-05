@@ -1,0 +1,18 @@
+.jumbotron {
+  padding-top: 6rem;
+  background-color: rgb(120, 12, 170);
+  color: azure;
+}
+
+#project {
+  background-color: rgb(120, 12, 170);
+  color: #fff;
+}
+
+.card-text {
+  color: #000;
+}
+
+section {
+  padding-top: 5rem;
+}
