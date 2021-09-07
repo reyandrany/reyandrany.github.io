@@ -144,20 +144,28 @@
           </div>
           <div class="row justify-content-center mb-3">
             <div class="col-md-6">
-              <form>
+              <div class="alert alert-info alert-dismissible fade show d-none my-alert" role="alert">
+                <strong>Pesan Terkirim</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <form name="contact-form">
                 <div class="mb-3">
                   <label for="name" class="form-label">Nama</label>
-                  <input type="text" class="form-control" id="name" aria-describedby="emailHelp" />
+                  <input type="text" class="form-control" name="nama" aria-describedby="emailHelp" />
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" />
+                  <input type="email" class="form-control" name="email" aria-describedby="emailHelp" />
                 </div>
                 <div class="mb-3">
                   <label for="pesan" class="form-label">Pesan</label>
                   <textarea class="form-control" name="pesan" id="pesan" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-dark">Kirim</button>
+                <button type="submit" class="btn btn-dark btn-kirim">Kirim</button>
+                <button class="btn btn-dark d-none btn-loading" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Loading...
+                </button>
               </form>
             </div>
           </div>
@@ -189,5 +197,32 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     -->
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxBQOxaG3Pl0j42y8spfb39iM_EtBxdU5YET1hesCdIajP3c0tepzHxO4RGSzSHvz3J/exec';
+      const form = document.forms['contact-form'];
+      const btnKirim = document.querySelector('.btn-kirim');
+      const btnLoading = document.querySelector('.btn-loading');
+      const myAlert = document.querySelector('.my-alert');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        //ketika tombol submit di klik
+        //tampilkan tombol loading, hilangkan tombol kirim
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => {
+            //tampilkan tombol kirim, hilangkan tombol loading
+            btnLoading.classList.toggle('d-none');
+            btnKirim.classList.toggle('d-none');
+            //tampilkan alert
+            myAlert.classList.toggle('d-none');
+            //reset form
+            form.reset();
+            console.log('Success!', response);
+          })
+          .catch((error) => console.error('Error!', error.message));
+      });
+    </script>
   </body>
 </html>
