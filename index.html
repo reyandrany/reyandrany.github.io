@@ -8,13 +8,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- my css -->
     <link rel="stylesheet" href="style.css" />
     <title>Rey Andrany || Portfolio</title>
   </head>
   <body id="home">
     <!--navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
       <div class="container shadow">
         <a class="navbar-brand" href="#home">Rey Andrany</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,8 +36,8 @@
     <!-- jumbotron -->
     <section class="jumbotron text-center">
       <img src="img/rey.jpg" alt="Rey Andrany" width="200" class="rounded-circle img-thumbnail" />
-      <h1 class="display-4">Rey Andrany</h1>
-      <p class="lead">Web Developer | Interior Designer</p>
+      <h1 class="display-4" data-aos="fade-up" data-aos-duration="2000">Rey Andrany</h1>
+      <p class="lead"></p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#fff"
@@ -56,10 +57,10 @@
           </div>
         </div>
         <div class="row justify-content-center fs-5 text-center">
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="300">
             <p>hi, I am a web developer and also an interior designer who has the will and ability to be the best</p>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-left" data-aos-delay="400" data-aos-duration="1000" data-aos-offset="300">
             <p>I work diligently and meticulously on every project I work on, and I don't like to waste time and neglect work</p>
           </div>
         </div>
@@ -85,7 +86,7 @@
         <div class="row justify-content-center">
           <div class="col-md-4 mb-3">
             <div class="card">
-              <img src="img/1.jpg" class="card-img-top" alt="project 1" />
+              <img src="img/6.png" class="card-img-top" alt="project 1" />
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
@@ -93,7 +94,7 @@
           </div>
           <div class="col-md-4 mb-3">
             <div class="card">
-              <img src="img/2.jpg" class="card-img-top" alt="project 2" />
+              <img src="img/7.png" class="card-img-top" alt="project 2" />
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
@@ -101,7 +102,7 @@
           </div>
           <div class="col-md-4 mb-3">
             <div class="card">
-              <img src="img/3.jpg" class="card-img-top" alt="project 3" />
+              <img src="img/8.png" class="card-img-top" alt="project 3" />
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
@@ -191,7 +192,24 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+      });
+    </script>
+    <!-- aos end -->
 
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/TextPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      gsap.to('.lead', { duration: 2, delay: 1.5, text: 'Full Stack Web Developer | Interior Designer' });
+      gsap.from('.jumbotron img', { duration: 2, rotateY: 360, opacity: 0 });
+    </script>
+    <!-- GSAP end -->
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
